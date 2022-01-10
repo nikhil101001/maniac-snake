@@ -202,20 +202,20 @@ function touchmove(e) {
 
 function touchend() {
   moveSound.play();
-  if (startingX + 10 < movingX) {
+  if (startingX + 100 < movingX) {
     // console.log("right", startingX, movingX);
     inputDir.x = 1;
     inputDir.y = 0;
-  } else if (startingX - 10 > movingX) {
+  } else if (startingX - 100 > movingX) {
     // console.log("left");
     inputDir.x = -1;
     inputDir.y = 0;
   }
-  if (startingY + 10 < movingY) {
+  if (startingY + 100 < movingY) {
     // console.log("down");
     inputDir.x = 0;
     inputDir.y = 1;
-  } else if (startingY - 10 > movingY) {
+  } else if (startingY - 100 > movingY) {
     // console.log("up", startingY, movingY);
     inputDir.x = 0;
     inputDir.y = -1;
