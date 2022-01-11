@@ -3,7 +3,7 @@ let inputDir = { x: 0, y: 0 };
 const foodSound = new Audio("../assets/eat.wav");
 const gameOverSound = new Audio("../assets/bumped.wav");
 const moveSound = new Audio("../assets/move.wav");
-let speed = 7;
+let speed = 8;
 let lastPaintTime = 0;
 let score = 0;
 let info = document.querySelector(".info");
@@ -36,9 +36,9 @@ function isCollide(snake) {
 
   //  if snake bump into the wall
   if (
-    snake[0].x >= 18 ||
+    snake[0].x >= 25 ||
     snake[0].x <= 0 ||
-    snake[0].y >= 18 ||
+    snake[0].y >= 25 ||
     snake[0].y <= 0
   ) {
     return true;
@@ -85,8 +85,9 @@ function gameEngine() {
   }
 
   // movment of snake
+  // reverse forloop to get the second last element of the snake and itrrate every element from the last to first and move one by one
   for (let i = snakeArr.length - 2; i >= 0; i--) {
-    // we cant do put value in this manner, we use destructuring and have to make new object using 3 dot(...)
+    // we cant put value in this manner, we use destructuring and have to make new object using 3 dot(...)
     // snakeArr[i + 1] = snakeArr[i];
     snakeArr[i + 1] = { ...snakeArr[i] };
   }
@@ -136,8 +137,10 @@ window.addEventListener("keydown", (e) => {
   // hide the info tab
   info.style.display = "none";
   gameOver.style.display = "none";
+
   inputDir = { x: 0, y: 1 }; // start the game(press any key)
   moveSound.play();
+
   switch (e.key) {
     case "ArrowUp":
       // console.log("ArrowUp");
