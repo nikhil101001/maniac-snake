@@ -22,6 +22,7 @@
 .body {
   background: radial-gradient(gray, black);
   min-height: 100vh;
+  min-width: 100vw;
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   display: flex;
@@ -44,30 +45,36 @@
   grid-template-rows: repeat(25, 1fr);
 }
 
+#score {
+  display: flex;
+  position: absolute;
+  top: 0;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 16px;
+  /* margin: 12px; */
+  padding: 12px;
+  z-index: 1;
+}
+
 #scoreBox {
   color: white;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 12px;
+  /* position: absolute; */
+  /* right: 0; */
+  /* top: 0; */
   padding: 12px;
   border-bottom: 2px solid white;
   border-radius: 8px;
-  font-size: 18px;
-  z-index: 1;
 }
 
 #highScoreBox {
   color: white;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  margin: 12px;
+  /* position: absolute; */
+  /* left: 0; */
+  /* bottom: 0; */
   padding: 12px;
   border-bottom: 2px solid white;
   border-radius: 8px;
-  font-size: 18px;
-  z-index: 1;
 }
 
 .head {
@@ -122,7 +129,7 @@
 
 @media only screen and (max-width: 450px) {
   #board {
-    height: 70vmax;
+    height: 73vmax;
     display: grid;
     grid-template-columns: repeat(25, 1fr);
     grid-template-rows: repeat(35, 1fr);
