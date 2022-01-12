@@ -89,10 +89,10 @@ function gameEngine() {
     // a + (b - a) * Math.round();
 
     // the a and b depends on grid size of the board in this case gird size is 25 so the number is start form (0 to 25)
-    let a = 1;
-    let b = 25;
+    let a = 2;
+    let b = 24;
     if (widthSm <= 450) {
-      let c = 35;
+      let c = 34;
       food = {
         x: Math.round(a + (b - a) * Math.random()), // math.random can create any number b\w (0 to 1) randomly
         y: Math.round(a + (c - a) * Math.random()),
