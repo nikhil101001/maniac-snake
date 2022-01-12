@@ -8,6 +8,7 @@ let lastPaintTime = 0;
 let score = 0;
 let info = document.querySelector(".info");
 let gameOver = document.querySelector(".gameOver");
+let widthSm = window.screen.width;
 
 // the x and y axis in the java script is the top left corner of the screen where the element is srarted
 let snakeArr = [{ x: 13, y: 15 }];
@@ -34,11 +35,23 @@ function isCollide(snake) {
     }
   }
 
-  //  if snake bump into the wall
-  if (
-    snake[0].x >= 25 ||
+  //  if snake bump into the wall (on mobile screen)
+  if (widthSm <= 450) {
+    if (
+      snake[0].x >= 26 ||
+      snake[0].x <= 0 ||
+      snake[0].y >= 36 ||
+      snake[0].y <= 0
+    ) {
+      return true;
+    }
+  }
+
+  //  if snake bump into the wall (on desktop)
+  else if (
+    snake[0].x >= 26 ||
     snake[0].x <= 0 ||
-    snake[0].y >= 25 ||
+    snake[0].y >= 26 ||
     snake[0].y <= 0
   ) {
     return true;
@@ -75,13 +88,21 @@ function gameEngine() {
     // if we want to generate the random number in between a and b then:-
     // a + (b - a) * Math.round();
 
-    // these a and b point can be changed according to the easyness of the game a=2;, b=16;(food in the middle)
-    let a = 2;
-    let b = 16;
-    food = {
-      x: Math.round(a + (b - a) * Math.random()),
-      y: Math.round(a + (b - a) * Math.random()),
-    };
+    // the a and b depends on grid size of the board in this case gird size is 25 so the number is start form (0 to 25)
+    let a = 1;
+    let b = 25;
+    if (widthSm <= 450) {
+      let c = 35;
+      food = {
+        x: Math.round(a + (b - a) * Math.random()), // math.random can create any number b\w (0 to 1) randomly
+        y: Math.round(a + (c - a) * Math.random()),
+      };
+    } else {
+      food = {
+        x: Math.round(a + (b - a) * Math.random()), // math.random can create any number b\w (0 to 1) randomly
+        y: Math.round(a + (b - a) * Math.random()),
+      };
+    }
   }
 
   // movment of snake
@@ -199,6 +220,8 @@ function touchstart(e) {
 }
 
 function touchmove(e) {
+  e.stopImmediatePropagation();
+
   movingX = e.touches[0].clientX;
   movingY = e.touches[0].clientY;
 }

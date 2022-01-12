@@ -2,11 +2,20 @@
   padding: 0;
   margin: 0;
   font-family: monospace;
+  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-body,
-html {
-  overflow: hidden;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .body {
@@ -27,11 +36,10 @@ html {
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100vmin;
-  height: 95vmin;
+  height: 93vmin;
   display: grid;
-  grid-template-rows: repeat(25, 1fr);
   grid-template-columns: repeat(25, 1fr);
-  margin: 12px;
+  grid-template-rows: repeat(25, 1fr);
 }
 
 #scoreBox {
@@ -43,7 +51,7 @@ html {
   padding: 12px;
   border-bottom: 2px solid white;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   z-index: 1;
 }
 
@@ -56,7 +64,7 @@ html {
   padding: 12px;
   border-bottom: 2px solid white;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   z-index: 1;
 }
 
@@ -110,8 +118,11 @@ html {
   display: none;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 450px) {
   #board {
-    height: 100vmin;
+    height: 73vmax;
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(35, 1fr);
   }
 }
