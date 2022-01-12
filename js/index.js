@@ -200,11 +200,11 @@ window.addEventListener("keydown", (e) => {
 let startingX, startingY, movingX, movingY;
 
 // Disable context menu (on right click (desable all the options))
-// window.oncontextmenu = function (e) {
-//   e.preventDefault();
-//   e.stopPropagation();
-//   return false;
-// };
+window.oncontextmenu = function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+};
 
 window.addEventListener("touchstart", touchstart);
 window.addEventListener("touchend", touchend);
